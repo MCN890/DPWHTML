@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalho DPW - MCN890</title>
+  <style>
+    /* Reset e fonte */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+    body {
+      background: #1e1e2f;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #ffb347; }
+    p { font-size: 1.2rem; color: #d0d0d0; }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: 90%;
+      max-width: 1000px;
+      margin: 2rem 0;
+    }
+
+    .card {
+      background: #2c2c3e;
+      border-radius: 15px;
+      padding: 2rem 1rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .card h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #ffa500;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #1e1e2f;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      background: #ffb347;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .card a:hover {
+      background: #ffa500;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      text-align: center;
+      background: #2c2c3e;
+      width: 100%;
+      font-size: 0.9rem;
+      color: #d0d0d0;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .card { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trabalho DPW - MCN890</h1>
+    <p>Escolha a página que deseja acessar:</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Currículo</h2>
+      <a href="cv2.html">Abrir</a>
+    </div>
+    <div class="card">
+      <h2>Formulário</h2>
+      <a href="formulário.html">Abrir</a>
+    </div>
+    <div class="card">
+      <h2>Galeria</h2>
+      <a href="galeria.html">Abrir</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 MCN890 — Trabalho de Desenvolvimento Web
+  </footer>
+</body>
+</html>

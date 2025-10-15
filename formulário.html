@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCN — Formulário Elegante</title>
+  <style>
+    :root{
+--bg-1: #203f87; /* base dark */
+--bg-2: #0b1220; /* deep */
+--card: rgba(255,255,255,0.05);
+--glass: rgba(255,255,255,0.04);
+--accent: linear-gradient(90deg,#339fc4 0%, #402ca7 100%);
+--accent-solid: #2d3699;
+--muted: rgba(255,255,255,0.65);
+--radius: 16px;
+--shadow: 0 10px 30px rgba(2,6,23,0.6);
+--glass-border: rgba(255,255,255,0.06);
+--success: #10b981;
+--danger: #ef4444;
+--transition: 200ms ease;
+--gap: 14px;
+color-scheme: dark;
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe
+    }
+    *{box-sizing:border-box}
+    body{
+margin:0;
+background: radial-gradient(1200px 600px at 10% 10%, rgba(123,97,255,0.12), transparent 8%),
+radial-gradient(900px 500px at 95% 90%, rgba(86,204,242,0.08), transparent 8%),
+linear-gradient(180deg,var(--bg-1), var(--bg-2));
+display:flex; align-items:center; justify-content:center;
+padding:36px; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+color: #e6eef8;
+    }
+
+    .container{
+width:100%; max-width:1100px; display:grid; grid-template-columns: 420px 1fr; gap:20px;
+background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+border-radius:calc(var(--radius) + 4px); padding:1px; /* subtle outline */
+box-shadow: var(--shadow);
+    }
+    
+
+@media (max-width:980px){
+.container{grid-template-columns:1fr; padding:10px}
+.side{display:none}
+.panel{border-radius:12px}
+    }
+
+    .side{
+padding:34px; width:420px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+display:flex; flex-direction:column; gap:18px; justify-content:center; align-items:flex-start;
+border-right:1px solid var(--glass-border);
+    }
+  .brand{font-weight:800; letter-spacing:0.6px; font-size:18px; color: white}
+.hero{font-size:40px; line-height:1; font-weight:800; letter-spacing:-1px; margin-top:6px}
+.subtitle{color:var(--muted); font-size:14px}
+.badge{padding:6px 10px; border-radius:999px; font-weight:700; background: linear-gradient(90deg,#ffffff, #b2b2b7); color:white; font-size:12px}
+
+    main{
+     padding:28px 36px; display:flex; flex-direction:column; gap:12px; flex:1;
+}
+    
+    h1{margin:0 0 8px 0; font-size:20px}
+    p.lead{margin:0 0 18px 0; color:var(--muted); font-size:14px}
+
+    form{display:grid; gap:14px}
+    fieldset{border:0; padding:0;margin:0}
+
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    label.input{
+      display:flex; flex-direction:column; gap:8px; font-size:13px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select, textarea{
+padding:12px 14px; border-radius:12px; border:1px solid transparent; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+outline:none; font-size:14px; color: #e6eef8; backdrop-filter: blur(6px);
+transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+box-shadow: 0 4px 14px rgba(2,6,23,0.5) inset;
+min-height:44px;
+    }
+    input:focus, select:focus, textarea:focus{border-color:var(--accent-end); box-shadow:0 6px 20px rgba(138,125,255,0.12)}
+    textarea{min-height:130px; resize:vertical}
+
+
+.choices{display:flex; gap:10px; flex-wrap:wrap}
+.checkbox, .radio{display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); cursor:pointer; user-select:none}
+.checkbox input, .radio input{accent-color: var(--accent-solid)}
+
+
+.file-wrap{display:flex; gap:12px; align-items:center}
+.file-name{font-size:13px; color:var(--muted); max-width:320px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.file-input{position:relative; overflow:hidden; display:inline-block}
+
+.actions{display:flex; gap:12px; margin-top:6px}
+.btn{padding:10px 16px; border-radius:12px; border:0; cursor:pointer; font-weight:700; letter-spacing:0.2px}
+
+
+.btn-primary{
+background: var(--accent); color:white; box-shadow: 0 8px 30px rgba(107,92,255,0.16);
+transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.btn-primary:hover{transform:translateY(-3px)}
+
+
+.btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted)}
+
+   nav.topnav{display:flex; gap:14px; margin-bottom:6px}
+nav.topnav a{color:rgba(255,255,255,0.75); text-decoration:none; font-size:13px}
+
+
+.note{font-size:12px; color:var(--muted)}
+footer.small{font-size:12px; color:var(--muted); margin-top:8px}
+
+}
+
+
+/* small helper */
+.muted{color:var(--muted)}
+.hint{font-size:12px;color:rgba(230,238,248,0.45)}
+
+
+/* small file button style */
+.file-btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;font-weight:700}
+
+  </style>
+</head>
+<body>
+  <div class="container" role="region" aria-label="Formulário MCN">
+    <aside class="side">
+      <div class="brand">MCN — Formulário</div>
+      <div style="font-size:36px;font-weight:700;line-height:1">Bem-vindo</div>
+      <div class="subtitle">Preencha os dados abaixo para nos ajudar a conhecê-lo melhor. O formulário é responsivo e acessível.</div>
+      <div class="note">Dicas: use um e-mail válido e anexe ficheiros até 5MB.</div>
+    </aside>
+
+    <main>
+      <nav class="topnav" aria-label="menu principal">
+        <a href="Minha galeria.html">Minha galeria</a>
+        <a href="Cv2.html">Cv2</a>
+        <a href="Meu formulário.html">Meu formulário</a>
+      </nav>
+
+      <h1>Informações Pessoais</h1>
+      <p class="lead">Campos com * são obrigatórios</p>
+
+      <form action="processa.php" method="post" enctype="multipart/form-data" novalidate>
+        <fieldset>
+          <div class="grid-2">
+            <label class="input">Nome *
+              <input type="text" name="nome" id="nome" required placeholder="Ex: João Silva">
+            </label>
+
+            <label class="input">E‑mail *
+              <input type="email" name="email" id="email" required placeholder="nome@exemplo.com">
+            </label>
+          </div>
+
+          <div class="grid-2">
+            <label class="input">Senha *
+              <input type="password" name="senha" id="senha" required placeholder="Mínimo 8 caracteres">
+            </label>
+
+            <label class="input">Telefone
+              <input type="tel" name="telefone" id="telefone" placeholder="(+258) 84 000 0000" pattern="\(\+258\)\s\d{2}\s\d{3}\s\d{4}">
+            </label>
+          </div>
+
+          <label class="input">Curso
+            <select name="curso" id="curso">
+              <option value="">--Selecione--</option>
+              <option value="prog">Programação</option>
+              <option value="redes">Redes</option>
+              <option value="design">Design</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend style="font-weight:600;margin-bottom:8px">Áreas de Interesse</legend>
+            <div class="choices">
+              <label class="checkbox"><input type="checkbox" name="interesse[]" value="Musica"> Música</label>
+              <label class="checkbox"><input type="checkbox" name="interesse[]" value="Desporto"> Desporto</label>
+              <label class="checkbox"><input type="checkbox" name="interesse[]" value="Tecnologia"> Tecnologia</label>
+              <label class="checkbox"><input type="checkbox" name="interesse[]" value="Leitura"> Leitura</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend style="font-weight:600;margin-bottom:8px">Gênero</legend>
+            <div class="choices">
+              <label class="radio"><input type="radio" name="genero" value="Masculino"> Masculino</label>
+              <label class="radio"><input type="radio" name="genero" value="Feminino"> Feminino</label>
+              <label class="radio"><input type="radio" name="genero" value="Outro"> Outro</label>
+            </div>
+          </fieldset>
+
+          <label class="input">Comentário
+            <textarea name="mensagem" id="mensagem" rows="4" placeholder="Deixe uma mensagem..."></textarea>
+          </label>
+
+          <div class="file-wrap">
+            <div class="file-input">
+              <button type="button" class="btn btn-ghost" id="btnFile">Anexar Ficheiro</button>
+              <input type="file" id="ficheiro" name="ficheiro" aria-label="Anexar ficheiro">
+            </div>
+            <div class="file-name" id="fileName">Nenhum ficheiro escolhido</div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="reset" class="btn btn-ghost">Limpar</button>
+          </div>
+
+        </fieldset>
+      </form>
+
+      <footer class="small">MCN • Formulário criado para fins demonstrativos</footer>
+    </main>
+  </div>
+
+  <script>
+    // mostra o nome do ficheiro escolhido e liga o botão personalizado
+    const inputFile = document.getElementById('ficheiro');
+    const fileName = document.getElementById('fileName');
+    const btnFile = document.getElementById('btnFile');
+    btnFile.addEventListener('click', ()=> inputFile.click());
+    inputFile.addEventListener('change', ()=>{
+      if (inputFile.files.length) fileName.textContent = inputFile.files[0].name;
+      else fileName.textContent = 'Nenhum ficheiro escolhido';
+    });
+
+    // validação simples antes de submeter
+    document.querySelector('form').addEventListener('submit', function(e){
+      const senha = document.getElementById('senha');
+      if (senha.value && senha.value.length < 8){
+        e.preventDefault();
+        alert('A senha deve ter pelo menos 8 caracteres.');
+        senha.focus();
+      }
+    });
+  </script>
+</body>
+</html>
