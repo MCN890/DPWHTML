@@ -1,97 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Galeria Multimédia Elegante</title>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body {
-         background: linear-gradient(135deg, gray, gray, gray);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #fff;
-    min-height: 100vh;
-    padding: 20px;
-    padding-top: 90px; /* espaço para o header fixo */
-
+        background: linear-gradient(135deg,#0f2027, #203a43, #2c5364);
+        background-attachment: fixed; background-size: cover; background-repeat: no-repeat;
+        color: #fff; min-height: 100vh; padding: 20px; padding-top: 90px;
     }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+    .container { max-width: 1200px; margin: 0 auto; }
 
     /* HEADER FIXO COM MENU */
     header.site-header {
-        background: rgba(0,0,0,0.45);
-        backdrop-filter: blur(4px);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        padding: 12px 28px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
+        position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+        padding: 12px 28px; display: flex; justify-content: space-between; align-items: center;
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
-    header.site-header .brand h1 {
-        font-size: 1.2rem;
-        color: #00ffff;
-        margin: 0;
-    }
-    nav.top-nav ul {
-        list-style: none;
-        display: flex;
-        gap: 18px;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-    }
-    nav.top-nav a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: 600;
-        padding: 8px 12px;
-        border-radius: 8px;
-        transition: background 0.25s, color 0.25s, transform 0.15s;
-    }
-    nav.top-nav a:hover {
-        color: #000;
-        background: #ffcc00;
-        transform: translateY(-2px);
-    }
+    header.site-header .brand h1 { font-size: 1.2rem; color: #00ffff; margin: 0; }
+    nav.top-nav ul { list-style: none; display: flex; gap: 18px; align-items: center; margin: 0; padding: 0; }
+    nav.top-nav a { text-decoration: none; color: #fff; font-weight: 600; padding: 8px 12px; border-radius: 8px; transition: background 0.25s, color 0.25s, transform 0.15s; }
+    nav.top-nav a:hover { color: #000; background: #ffcc00; transform: translateY(-2px); }
 
-    /* BOTÃO DE ALTERAR TEMA (fixo, no topo à direita) */
+    /* THEME TOGGLE (topo direita) */
     .theme-toggle {
-        position: fixed;
-        top: 18px;
-        right: 22px;
-        z-index: 1100;
-        background: rgba(255,255,255,0.08);
-        border: 2px solid rgba(255,255,255,0.12);
-        border-radius: 50%;
-        width: 46px;
-        height: 46px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        position: fixed; top: 18px; right: 22px; z-index: 1100;
+        background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.12);
+        border-radius: 50%; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;
+        cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-    .theme-toggle i {
-        font-size: 1.2rem;
-        color: #fff;
-    }
+    .theme-toggle .icon { font-size: 1.2rem; color: #fff; user-select: none; }
 
     header { text-align: center; padding: 30px 0; margin-bottom: 30px; }
     h1 { font-size: 2.8rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
@@ -102,33 +43,19 @@
 
     .image-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
 
-    .image-card { background: rgba(255,255,255,0.1); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
+    .image-card { background: rgba(255,255,255,0.06); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
     .image-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
     .image-card img { width: 100%; height: 200px; object-fit: cover; display: block; cursor: pointer; }
-    .image-caption { padding: 15px; text-align: center; }
+    .image-caption { padding: 15px; text-align: center; color: #fff; }
 
-    .options-menu:hover { background: rgba(0, 0, 0, 0.9); }
-    .options-menu::after { content: "⋮"; color: white; font-size: 20px; font-weight: bold; }
+    .audio-player, .video-container { background: rgba(255,255,255,0.06); border-radius: 15px; padding: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); margin-bottom: 30px; position: relative; }
+    .audio-title, .video-title { font-size: 1.5rem; margin-bottom: 15px; text-align: center; }
 
-    .dropdown-content { display: none; position: absolute; top: 40px; right: 0; background-color: rgba(0,0,0,0.9); min-width: 120px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 20; border-radius: 5px; overflow: hidden; }
-    .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; transition: background 0.3s; }
-    .dropdown-content a:hover { background-color: rgba(255,255,255,0.2); }
-    .options-menu.active .dropdown-content { display: block; }
-
-    .audio-player { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); margin-bottom: 30px; position: relative; }
-    .audio-title { font-size: 1.5rem; margin-bottom: 15px; text-align: center; }
-    .audio-player audio { width: 100%; border-radius: 30px; outline: none; }
-
-    .video-container { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); margin-bottom: 30px; position: relative; }
-    .video-title { font-size: 1.5rem; margin-bottom: 15px; text-align: center; }
-    .video-player { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-    .video-caption { padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px; line-height: 1.6; }
-
-    footer { text-align: center; padding: 30px 0; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); }
+    footer { text-align: center; padding: 30px 0; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.08); }
 
     /* Modal para imagem em tela cheia */
     .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow: auto; }
-    .modal-content { margin: auto; display: block; width: 80%; max-width: 700px; max-height: 80%; margin-top: 5%; border-radius: 10px; }
+    .modal-content { margin: auto; display: block; width: 80%; max-width: 900px; max-height: 80%; margin-top: 5%; border-radius: 10px; }
     .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
     .close:hover { color: #bbb; }
 
@@ -151,24 +78,30 @@
         </div>
         <nav class="top-nav" role="navigation" aria-label="Menu principal">
             <ul>
-                <li><a href="galeria.html">galeria</a></li>
-                <li><a href="cv2.html">cV2</a></li>
-                <li><a href="formulário.html">formulário</a></li>
+                <li><a href="Minha galeria.html">Minha galeria</a></li>
+                <li><a href="cv2.html">CV2</a></li>
+                <li><a href="Meu formulário.html">Meu formulário</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- THEME TOGGLE -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+        <span id="themeIcon" class="icon">🌙</span>
+    </button>
+
     <div class="container">
         <header>
             <h1>Galeria Multimédia Elegante</h1>
-            <p class="subtitle">Uma experiência visual e auditiva </p>
+            <p class="subtitle">Uma experiência visual e auditiva</p>
         </header>
 
         <section class="gallery-section">
             <h2 class="section-title">Galeria de Imagens</h2>
             <div class="image-gallery">
+                <!-- Usa exactamente os nomes que forneceste; as imagens devem ficar na pasta "fotos/" -->
                 <div class="image-card">
-                    <img src="c:\Users\Milson\Documents\Trabalho DPWEBHTML\fotos\qque lindo.jpg" alt="Paisagem Natural">
+                    <img src="fotos/qque lindo.jpg" alt="Paisagem Natural">
                     <div class="image-caption">
                         <h3>Paisagem Serena</h3>
                         <p>Uma vista deslumbrante de montanhas e lagos em um dia ensolarado.</p>
@@ -176,7 +109,7 @@
                 </div>
 
                 <div class="image-card">
-                    <img src="c:\Users\Milson\Documents\Trabalho DPWEBHTML\fotos\pngtree-dense-fog-enveloping-a-quiet-forest-at-dawn-with-sunlight-image_16824136.jpg" alt="Floresta Nebulosa">
+                    <img src="fotos/pngtree-dense-fog-enveloping-a-quiet-forest-at-dawn-with-sunlight-image_16824136.jpg" alt="Floresta Nebulosa">
                     <div class="image-caption">
                         <h3>Floresta Encantada</h3>
                         <p>Névoa matinal envolvendo uma floresta densa e misteriosa.</p>
@@ -184,7 +117,7 @@
                 </div>
 
                 <div class="image-card">
-                    <img src="c:\Users\Milson\Documents\Trabalho DPWEBHTML\fotos\pngtree-aurora-borealis-lighting-up-the-starry-night-sky-over-an-icy-image_17690833.webp" alt="Aurora Boreal">
+                    <img src="fotos/pngtree-aurora-borealis-lighting-up-the-starry-night-sky-over-an-icy-image_17690833.webp" alt="Aurora Boreal">
                     <div class="image-caption">
                         <h3>Paisagem Gelada</h3>
                         <p>As luzes do Polo Norte no céu noturno sobre uma paisagem gelada.</p>
@@ -192,7 +125,7 @@
                 </div>
 
                 <div class="image-card">
-                    <img src="c:\Users\Milson\Documents\Trabalho DPWEBHTML\fotos\ssantiago Real Madrid.webp" alt="Real Madrid Stadium">
+                    <img src="fotos/ssantiago Real Madrid.webp" alt="Real Madrid Stadium">
                     <div class="image-caption">
                         <h3>Estádio Santiago Bernabéu</h3>
                         <p>Estádio do Real Madrid.</p>
@@ -200,7 +133,7 @@
                 </div>
 
                 <div class="image-card">
-                    <img src="c:\Users\Milson\Documents\Trabalho DPWEBHTML\fotos\allianz_arena-1-605x402.jpg" alt="Bayern Munich Stadium">
+                    <img src="fotos/allianz_arena-1-605x402.jpg" alt="Bayern Munich Stadium">
                     <div class="image-caption">
                         <h3>Allianz Arena</h3>
                         <p>Estádio do Bayern de Munique.</p>
@@ -208,7 +141,7 @@
                 </div>
 
                 <div class="image-card">
-                    <img src="c:\Users\Milson\Documents\Trabalho DPWEBHTML\fotos\aallianz-stadium.png" alt="Juventus Stadium">
+                    <img src="fotos/aallianz-stadium.png" alt="Juventus Stadium">
                     <div class="image-caption">
                         <h3>Allianz Stadium</h3>
                         <p>Estádio da Juventus.</p>
@@ -220,10 +153,11 @@
         <section class="gallery-section">
             <h2 class="section-title">Reprodutor de Áudio</h2>
             <div class="audio-player">
-                <h3 class="audio-title">King Cizzy- O Escolhido</h3>
-                <audio controls muted;>
-                    <source src="c:\Users\Milson\Documents\Trabalho DPWEBHTML\king cizzy  Lady luck (Feat. Dawny Laylizzy  Nicko Journey) _Letra_.m4a" type="audio/mpeg">
-                    Seu navegador não suporta o elemento de áudio.
+                <h3 class="audio-title">King Cizzy - O Escolhido</h3>
+                <!-- Coloca o ficheiro de áudio em /audio/ ou ajusta o caminho conforme necessário -->
+                <audio controls>
+                    <source src="audio/King cizzy  Lady luck (Feat. Dawny Laylizzy  Nicko Journey) _Letra_.m4a" type="audio/mp4">
+                    O teu navegador não suporta o elemento de áudio.
                 </audio>
                 <p style="text-align: center; margin-top: 15px;">Uma melodia relaxante para acalmar a mente e o espírito.</p>
             </div>
@@ -233,19 +167,16 @@
             <h2 class="section-title">Reprodutor de Vídeo</h2>
             <div class="video-container">
                 <h3 class="video-title">Maravilhas do Mundo do RAP</h3>
-                <iframe
-                    class="video-player"
-                    src="https://www.youtube.com/embed/J-g_lWgZrjo"
-                    title="Skill Monger VS Enciclopédia (Rapódromo)"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                    allowfullscreen
-                    style="border-radius: 10px;">
+                <iframe class="video-player"
+                        src="https://www.youtube.com/embed/J-g_lWgZrjo"
+                        title="Skill Monger VS Enciclopédia (Rapódromo)"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+                        allowfullscreen style="border-radius:10px;">
                 </iframe>
 
                 <div class="video-caption">
-                    <p>Este vídeo mostra o quão fraco foi o Enciclopédia diante do Skill Monger. Com várias brancas durante o primeiro, segundo e até o terceiro round. O Skill por outro lado, mostrou que tem skills para killar o Enci, saindo então VITORIOSO.</p>
-                    <p>DEPOIS VAI DIZER HAAAAAAAA</p>
+                    <p>Este vídeo mostra o quão fraco foi o Enciclopédia diante do Skill Monger...</p>
                 </div>
             </div>
         </section>
@@ -256,110 +187,36 @@
     </div>
 
     <!-- Modal para imagem em tela cheia -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="fullImage">
+    <div id="imageModal" class="modal" aria-hidden="true">
+        <span class="close" title="Fechar">&times;</span>
+        <img class="modal-content" id="fullImage" alt="Imagem em destaque">
     </div>
 
-<!-- SCRIPTS (mantive todas as funcionalidades originais e acrescentei o theme toggle) -->
 <script>
-    // Função para mostrar/ocultar menus de opções (mantido)
+    // Opções (menu) - mantive a lógica caso adiciones depois
     document.querySelectorAll('.options-menu').forEach(menu => {
-        menu.addEventListener('click', function(e) {
-            e.stopPropagation();
-            this.classList.toggle('active');
-        });
+        menu.addEventListener('click', function(e) { e.stopPropagation(); this.classList.toggle('active'); });
     });
-
-    // Fechar menus ao clicar fora (mantido)
     document.addEventListener('click', function() {
-        document.querySelectorAll('.options-menu').forEach(menu => {
-            menu.classList.remove('active');
-        });
+        document.querySelectorAll('.options-menu').forEach(menu => menu.classList.remove('active'));
     });
 
-    // Função para salvar imagem (mantido)
+    // Funções utilitárias
     function saveImage(imageUrl) {
-        const link = document.createElement('a');
-        link.href = imageUrl;
-        link.download = 'imagem-_galeria.jpg';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // Feedback para o usuário
+        const link = document.createElement('a'); link.href = imageUrl; link.download = '';
+        document.body.appendChild(link); link.click(); document.body.removeChild(link);
         alert('Imagem salva com sucesso!');
     }
-
-    // Função para compartilhar imagem (mantido)
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => alert('Link da imagem copiado!')).catch(() => alert('Não foi possível copiar o link.'));
+    }
     function shareImage(imageUrl) {
         if (navigator.share) {
-            navigator.share({
-                title: 'Galeria Multimédia Elegante',
-                text: 'Confira esta imagem incrível da galeria!',
-                url: imageUrl,
-            })
-            .then(() => console.log('Compartilhado com sucesso'))
-            .catch((error) => {
-                console.error('Erro ao compartilhar:', error);
-                // Fallback para copiar link
-                copyToClipboard(imageUrl);
-            });
-        } else {
-            // Fallback para copiar link
-            copyToClipboard(imageUrl);
-        }
+            navigator.share({ title: 'Galeria', text: 'Vê esta imagem', url: imageUrl }).catch(()=>copyToClipboard(imageUrl));
+        } else copyToClipboard(imageUrl);
     }
 
-    // Função para copiar para a área de transferência (mantido)
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text)
-            .then(() => {
-                alert('Link da imagem copiado para a área de transferência!');
-            })
-            .catch(err => {
-                console.error('Erro ao copiar: ', err);
-                alert('Não foi possível copiar o link. Tente novamente.');
-            });
-    }
-
-    // Ação de salvar (mantido)
-    document.querySelectorAll('.save-option').forEach(option => {
-        option.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Verificar se é uma imagem (tem o atributo data-image)
-            const imageUrl = this.getAttribute('data-image');
-            if (imageUrl) {
-                saveImage(imageUrl);
-            } else {
-                alert('Opção de salvar acionada! Em uma aplicação real, isso salvaria o conteúdo.');
-            }
-
-            if (this.closest('.options-menu')) this.closest('.options-menu').classList.remove('active');
-        });
-    });
-
-    // Ação de compartilhar (mantido)
-    document.querySelectorAll('.share-option').forEach(option => {
-        option.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Verificar se é uma imagem (tem o atributo data-image)
-            const imageUrl = this.getAttribute('data-image');
-            if (imageUrl) {
-                shareImage(imageUrl);
-            } else {
-                alert('Opção de compartilhar acionada! Em uma aplicação real, isso abriria opções de compartilhamento.');
-            }
-
-            if (this.closest('.options-menu')) this.closest('.options-menu').classList.remove('active');
-        });
-    });
-
-    // Funcionalidade de tela cheia para imagens (mantido)
+    // Modal (imagem em tela cheia)
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('fullImage');
     const closeBtn = document.querySelector('.close');
@@ -367,73 +224,48 @@
     document.querySelectorAll('.image-card img').forEach(img => {
         img.addEventListener('click', function() {
             modal.style.display = 'block';
+            modal.setAttribute('aria-hidden','false');
             modalImg.src = this.src;
         });
     });
 
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
+    closeBtn.addEventListener('click', () => { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); });
+    modal.addEventListener('click', function(e) { if (e.target === modal) { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); } });
 
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    // Fechar modal com tecla ESC (mantido)
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            modal.style.display = 'none';
-        }
-    });
-
-    // ----------------------------
-    // THEME TOGGLE (nova funcionalidade adicionada)
-    // ----------------------------
+    // THEME TOGGLE - implementações de light/dark
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
-    const root = document.documentElement;
 
+    function applyLightTheme() {
+        document.body.style.background = 'linear-gradient(135deg,#ffffff,#f1f1f1,#e9eef5)';
+        document.body.style.color = '#222';
+        document.querySelectorAll('.image-card, .audio-player, .video-container').forEach(el => {
+            el.style.background = 'rgba(0,0,0,0.04)';
+            el.style.color = '#222';
+        });
+        themeIcon.textContent = '☀️';
+    }
     function applyDarkTheme() {
-        document.body.style.background = 'linear-gradient(135deg, blue, #b21f1f, #fdbb2d)';
+        document.body.style.background = 'linear-gradient(135deg,#0f2027, #203a43, #2c5364)';
         document.body.style.color = '#fff';
         document.querySelectorAll('.image-card, .audio-player, .video-container').forEach(el => {
-            el.style.background = 'rgba(255,255,255,0.1)';
+            el.style.background = 'rgba(255,255,255,0.06)';
             el.style.color = '#fff';
         });
-        document.querySelectorAll('.image-caption, .video-caption').forEach(el => {
-            el.style.background = 'transparent';
-            el.style.color = '#fff';
-        });
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
+        themeIcon.textContent = '🌙';
     }
 
     // Ler preferência salva
     const savedTheme = localStorage.getItem('mcn_theme') || 'dark';
-    if (savedTheme === 'light') {
-        applyLightTheme();
-    } else {
-        applyDarkTheme();
-    }
+    if (savedTheme === 'light') applyLightTheme(); else applyDarkTheme();
 
     themeToggle.addEventListener('click', () => {
         const current = localStorage.getItem('mcn_theme') || 'dark';
-        if (current === 'dark') {
-            localStorage.setItem('mcn_theme', 'light');
-            applyLightTheme();
-        } else {
-            localStorage.setItem('mcn_theme', 'dark');
-            applyDarkTheme();
-        }
+        if (current === 'dark') { localStorage.setItem('mcn_theme','light'); applyLightTheme(); }
+        else { localStorage.setItem('mcn_theme','dark'); applyDarkTheme(); }
     });
 
 </script>
-
-
 </body>
 </html>
-
-
-
