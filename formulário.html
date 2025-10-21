@@ -3,100 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MCN — Formulário Elegante</title>
+  <title>MCN — Formulário Elegante + Gráfico</title>
   <style>
-    :root{
-      --bg:#f3f6fb;
-      --card:#ffffff;
-      --accent-start:#6dd3f3;
-      --accent-end:#8a7dff;
-      --muted:#6b7280;
-      --radius:14px;
-      --glass: rgba(255,255,255,0.6);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,var(--bg),#eef3fb 60%);
-      color:#0f172a;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px;
+    :root {
+      --bg-1: #1a2c5e;
+      --bg-2: #080e1a;
+      --card: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.08);
+      --accent: linear-gradient(90deg, #3a9fc4 0%, #4a36c7 100%);
+      --accent-solid: #3d49c9;
+      --muted: rgba(255,255,255,0.85);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(2,6,23,0.8);
+      --glass-border: rgba(255,255,255,0.12);
+      --transition: 200ms ease;
+      --gap: 14px;
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
 
-    .container{
-      width:100%;
-      max-width:980px;
-      background:linear-gradient(135deg,var(--glass), rgba(255,255,255,0.92));
-      border-radius:var(--radius);
-      box-shadow: 0 10px 30px rgba(15,23,42,0.12);
-      overflow:hidden;
-      display:grid;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(123,97,255,0.18), transparent 8%),
+        radial-gradient(900px 500px at 95% 90%, rgba(86,204,242,0.12), transparent 8%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #f0f6ff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
       grid-template-columns: 420px 1fr;
+      gap: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border-radius: calc(var(--radius) + 4px);
+      padding: 1px;
+      box-shadow: var(--shadow);
     }
 
-    @media (max-width:880px){
-      .container{grid-template-columns:1fr; padding:0}
-      .side{display:none}
+    @media (max-width: 980px) {
+      .container { grid-template-columns: 1fr; padding: 10px; }
+      .side { display: none; }
+      .panel { border-radius: 12px; }
     }
 
-    .side{
-      padding:28px;
-      background: linear-gradient(180deg,var(--accent-start),var(--accent-end));
-      color:white;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      align-items:flex-start;
-      justify-content:center;
+    .side {
+      padding: 34px;
+      width: 420px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: center;
+      align-items: flex-start;
+      border-right: 1px solid var(--glass-border);
     }
-    .brand{font-weight:700; font-size:20px; letter-spacing:0.2px}
-    .subtitle{opacity:0.95; font-size:14px}
 
-    main{
-      padding:28px 32px;
+    .brand { font-weight: 800; letter-spacing: 0.6px; font-size: 18px; color: white; }
+    .hero { font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -1px; margin-top: 6px; }
+    .subtitle { color: var(--muted); font-size: 14px; }
+
+    main { padding: 28px 36px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    h1 { margin: 0 0 8px 0; font-size: 20px; color: white; }
+    p.lead { margin: 0 0 18px 0; color: var(--muted); font-size: 14px; }
+    form { display: grid; gap: 14px; }
+    fieldset { border: 0; padding: 0; margin: 0; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    label.input { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #e6eef8; }
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select, textarea {
+      padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04)); outline: none; font-size: 14px; color: #f0f6ff; backdrop-filter: blur(6px); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); box-shadow: 0 4px 14px rgba(2,6,23,0.5) inset; min-height: 44px;
     }
-    h1{margin:0 0 8px 0; font-size:20px}
-    p.lead{margin:0 0 18px 0; color:var(--muted); font-size:14px}
 
-    form{display:grid; gap:14px}
-    fieldset{border:0; padding:0;margin:0}
+    input:focus, select:focus, textarea:focus { border-color: #5d6af0; box-shadow: 0 6px 20px rgba(138,125,255,0.25); }
+    textarea { min-height: 130px; resize: vertical; }
+    .choices { display: flex; gap: 10px; flex-wrap: wrap; }
+    .checkbox, .radio { display: inline-flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04)); border: 1px solid rgba(255,255,255,0.12); cursor: pointer; user-select: none; color: #e6eef8; }
+    .checkbox input, .radio input { accent-color: var(--accent-solid); }
+    .file-wrap { display: flex; gap: 12px; align-items: center; }
+    .file-name { font-size: 13px; color: var(--muted); max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-input { position: relative; overflow: hidden; display: inline-block; }
+    .actions { display: flex; gap: 12px; margin-top: 6px; }
+    .btn { padding: 10px 16px; border-radius: 12px; border: 0; cursor: pointer; font-weight: 700; letter-spacing: 0.2px; }
+    .btn-primary { background: var(--accent); color: white; box-shadow: 0 8px 30px rgba(107,92,255,0.25); transition: transform 160ms ease, box-shadow 160ms ease; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(107,92,255,0.35); }
+    .btn-ghost { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--muted); }
+    nav.topnav { display: flex; gap: 14px; margin-bottom: 6px; }
+    nav.topnav a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 13px; }
+    .note { font-size: 12px; color: var(--muted); }
+    footer.small { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .muted { color: var(--muted); }
+    .hint { font-size: 12px; color: rgba(230,238,248,0.65); }
+    .file-btn { padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.08); font-weight: 700; color: #e6eef8; }
+    legend { font-weight: 600; margin-bottom: 8px; color: #e6eef8; }
 
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-    label.input{
-      display:flex; flex-direction:column; gap:8px; font-size:13px;
+    /* Chart area styling */
+    .chart-card {
+      margin-top: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
     }
-    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select, textarea{
-      padding:12px 14px; border-radius:10px; border:1px solid #e6eef9; background:white; outline:none; font-size:14px;
-      box-shadow:inset 0 1px 0 rgba(16,24,40,0.02);
-      transition:box-shadow .15s, border-color .15s, transform .06s;
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
     }
-    input:focus, select:focus, textarea:focus{border-color:var(--accent-end); box-shadow:0 6px 20px rgba(138,125,255,0.12)}
-    textarea{resize:vertical; min-height:110px}
 
-    .choices{display:flex; gap:12px; flex-wrap:wrap}
-    .checkbox, .radio{display:inline-flex; align-items:center; gap:8px; background:#fbfdff; padding:8px 10px; border-radius:10px; border:1px solid #eef5ff}
+    .chart-title { font-weight: 700; color: white; font-size: 15px; }
+    .chart-sub { font-size: 12px; color: var(--muted); }
 
-    .file-wrap{display:flex; gap:12px; align-items:center}
-    .file-name{font-size:13px; color:var(--muted)}
-    .file-input{position:relative; overflow:hidden; display:inline-block}
-    .file-input input[type=file]{position:absolute; inset:0; opacity:0; width:100%; height:100%; cursor:pointer}
+    /* make canvas responsive */
+    .chart-wrap { width: 100%; max-width: 100%; }
+    canvas { width: 100% !important; height: 320px !important; }
 
-    .actions{display:flex; gap:12px; margin-top:8px}
-    .btn{padding:10px 16px; border-radius:12px; border:0; cursor:pointer; font-weight:600}
-    .btn-primary{background:linear-gradient(90deg,var(--accent-start),var(--accent-end)); color:white}
-    .btn-ghost{background:transparent; border:1px solid #e6eef9}
-
-    nav.topnav{display:flex; gap:14px; margin-bottom:18px}
-    nav.topnav a{color:var(--muted); text-decoration:none; font-size:13px}
-    .note{font-size:12px; color:var(--muted); margin-top:6px}
-
-    footer.small{font-size:12px; color:var(--muted); margin-top:12px}
   </style>
 </head>
 <body>
@@ -107,39 +142,32 @@
       <div class="subtitle">Preencha os dados abaixo para nos ajudar a conhecê-lo melhor. O formulário é responsivo e acessível.</div>
       <div class="note">Dicas: use um e-mail válido e anexe ficheiros até 5MB.</div>
     </aside>
-
     <main>
       <nav class="topnav" aria-label="menu principal">
-        <a href="galeria.html">galeria</a>
-        <a href="cv2.html">cv2</a>
-        <a href="formulário.html">formulário</a>
+        <a href="Minha galeria.html">Minha galeria</a>
+        <a href="Cv2.html">Cv2</a>
+        <a href="Meu formulário.html">Meu formulário</a>
       </nav>
-
       <h1>Informações Pessoais</h1>
       <p class="lead">Campos com * são obrigatórios</p>
-
-      <form action="processa.php" method="post" enctype="multipart/form-data" novalidate>
+      <form id="mainForm" action="processa.php" method="post" enctype="multipart/form-data" novalidate>
         <fieldset>
           <div class="grid-2">
             <label class="input">Nome *
               <input type="text" name="nome" id="nome" required placeholder="Ex: João Silva">
             </label>
-
             <label class="input">E‑mail *
               <input type="email" name="email" id="email" required placeholder="nome@exemplo.com">
             </label>
           </div>
-
           <div class="grid-2">
             <label class="input">Senha *
               <input type="password" name="senha" id="senha" required placeholder="Mínimo 8 caracteres">
             </label>
-
             <label class="input">Telefone
               <input type="tel" name="telefone" id="telefone" placeholder="(+258) 84 000 0000" pattern="\(\+258\)\s\d{2}\s\d{3}\s\d{4}">
             </label>
           </div>
-
           <label class="input">Curso
             <select name="curso" id="curso">
               <option value="">--Selecione--</option>
@@ -148,9 +176,8 @@
               <option value="design">Design</option>
             </select>
           </label>
-
           <fieldset>
-            <legend style="font-weight:600;margin-bottom:8px">Áreas de Interesse</legend>
+            <legend>Áreas de Interesse</legend>
             <div class="choices">
               <label class="checkbox"><input type="checkbox" name="interesse[]" value="Musica"> Música</label>
               <label class="checkbox"><input type="checkbox" name="interesse[]" value="Desporto"> Desporto</label>
@@ -158,20 +185,17 @@
               <label class="checkbox"><input type="checkbox" name="interesse[]" value="Leitura"> Leitura</label>
             </div>
           </fieldset>
-
           <fieldset>
-            <legend style="font-weight:600;margin-bottom:8px">Gênero</legend>
+            <legend>Gênero</legend>
             <div class="choices">
               <label class="radio"><input type="radio" name="genero" value="Masculino"> Masculino</label>
               <label class="radio"><input type="radio" name="genero" value="Feminino"> Feminino</label>
               <label class="radio"><input type="radio" name="genero" value="Outro"> Outro</label>
             </div>
           </fieldset>
-
           <label class="input">Comentário
             <textarea name="mensagem" id="mensagem" rows="4" placeholder="Deixe uma mensagem..."></textarea>
           </label>
-
           <div class="file-wrap">
             <div class="file-input">
               <button type="button" class="btn btn-ghost" id="btnFile">Anexar Ficheiro</button>
@@ -179,39 +203,113 @@
             </div>
             <div class="file-name" id="fileName">Nenhum ficheiro escolhido</div>
           </div>
-
           <div class="actions">
             <button type="submit" class="btn btn-primary">Enviar</button>
             <button type="reset" class="btn btn-ghost">Limpar</button>
           </div>
-
         </fieldset>
       </form>
+
+      <section class="chart-card" aria-label="Gráfico de interesse por área">
+        <div class="chart-header">
+          <div>
+            <div class="chart-title">Áreas de Interesse — Exemplo</div>
+            <div class="chart-sub">Dados fictícios — personalizáveis</div>
+          </div>
+          <div class="hint">Os valores mostram número de pessoas interessadas</div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="barChart" role="img" aria-label="Gráfico de barras com as áreas de interesse"></canvas>
+        </div>
+        <div class="note" style="margin-top:8px;">Dica: você pode substituir os dados do gráfico pelo feedback real do formulário via JavaScript / back-end.</div>
+      </section>
 
       <footer class="small">MCN • Formulário criado para fins demonstrativos</footer>
     </main>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // mostra o nome do ficheiro escolhido e liga o botão personalizado
     const inputFile = document.getElementById('ficheiro');
     const fileName = document.getElementById('fileName');
     const btnFile = document.getElementById('btnFile');
-    btnFile.addEventListener('click', ()=> inputFile.click());
-    inputFile.addEventListener('change', ()=>{
+
+    btnFile.addEventListener('click', () => inputFile.click());
+
+    inputFile.addEventListener('change', () => {
       if (inputFile.files.length) fileName.textContent = inputFile.files[0].name;
       else fileName.textContent = 'Nenhum ficheiro escolhido';
     });
 
-    // validação simples antes de submeter
-    document.querySelector('form').addEventListener('submit', function(e){
+    document.querySelector('form').addEventListener('submit', function(e) {
       const senha = document.getElementById('senha');
-      if (senha.value && senha.value.length < 8){
+      if (senha.value && senha.value.length < 8) {
         e.preventDefault();
         alert('A senha deve ter pelo menos 8 caracteres.');
         senha.focus();
+        return;
       }
+
     });
+
+    const ctx = document.getElementById('barChart').getContext('2d');
+    const data = {
+      labels: ['Música', 'Desporto', 'Tecnologia', 'Leitura'],
+      datasets: [{
+        label: 'Número de interessados',
+        data: [12, 9, 23, 7],
+        backgroundColor: [
+          'rgba(58,159,196,0.9)',
+          'rgba(77,125,201,0.9)',
+          'rgba(74,54,199,0.9)',
+          'rgba(102,126,234,0.9)'
+        ],
+        borderRadius: 8,
+        barThickness: 28,
+        maxBarThickness: 48
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { usePointStyle: true }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#e6eef8' },
+          grid: { display: false }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: '#e6eef8', stepSize: 5 },
+          grid: { color: 'rgba(255,255,255,0.04)' }
+        }
+      }
+    };
+
+    const barChart = new Chart(ctx, {
+      type: 'bar',
+      data,
+      options
+    });
+
+    function atualizarGrafico(labels, valores) {
+      barChart.data.labels = labels;
+      barChart.data.datasets[0].data = valores;
+      barChart.update();
+    }
+
+    document.getElementById('curso').addEventListener('change', function() {
+      const curso = this.value;
+      if (curso === 'prog') atualizarGrafico(['Música','Desporto','Tecnologia','Leitura'], [8,6,30,4]);
+      else if (curso === 'redes') atualizarGrafico(['Música','Desporto','Tecnologia','Leitura'], [6,14,18,5]);
+      else if (curso === 'design') atualizarGrafico(['Música','Desporto','Tecnologia','Leitura'], [22,4,6,9]);
+      else atualizarGrafico(['Música','Desporto','Tecnologia','Leitura'], [12,9,23,7]);
+    });
+
   </script>
 </body>
-</html>  
+</html>
